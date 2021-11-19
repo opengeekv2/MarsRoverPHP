@@ -110,29 +110,24 @@ class MarsRover
         $this->state = new RoverState($grid);
     }
 
-    public function getState(): string
+    protected function getState(): string
     {
         return $this->state->getState();
     }
 
-    public function moveForward(): void
+    protected function moveForward(): void
     {
         $this->state = $this->state->moveForward();
     }
 
-    public function rotateRight(): void
+    protected function rotateRight(): void
     {
         $this->state = $this->state->rotateRight();
     }
 
-    public function rotateLeft(): void
+    protected function rotateLeft(): void
     {
         $this->state = $this->state->rotateLeft();
-    }
-
-    public function getCurrentDirection(): string
-    {
-        return $this->state->getCurrentDirection();
     }
 
     public function command(string $commands): string
