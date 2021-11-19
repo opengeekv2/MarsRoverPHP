@@ -15,7 +15,7 @@ class TestMarsRover extends TestCase
 
     public function testInitialState(): void
     {
-        $this->assertEquals("0:0:N", $this->marsRover->getState());
+        $this->assertEquals("0:0:N", $this->marsRover->command(""));
     }
 
     public function testMoveForward(): void

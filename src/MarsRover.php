@@ -137,7 +137,7 @@ class MarsRover
                 $this->rotateRight();
             } elseif ($char == 'L') {
                 $this->rotateLeft();
-            } else {
+            } elseif ($char == 'M') {
                 $this->moveForward();
             }
         }
