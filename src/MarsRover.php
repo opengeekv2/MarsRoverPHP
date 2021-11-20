@@ -57,6 +57,7 @@ class RoverState
 
     public function rotateRight(): RoverState
     {
+        if ($this->blocked) return $this;
         $first = $this->compass[0];
         $this->compass = array_slice($this->compass, 1);
         array_push($this->compass, $first);
@@ -73,6 +74,7 @@ class RoverState
 
     public function rotateLeft(): RoverState
     {
+        if ($this->blocked) return $this;
         $last = [array_pop($this->compass)];
         array_push($last, ...$this->compass);
 

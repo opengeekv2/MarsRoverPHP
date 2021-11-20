@@ -134,6 +134,22 @@ class TestMarsRover extends TestCase
         $this->assertEquals("O:0:0:N", $this->marsRover->command("MMMMM"));
     }
 
+    public function testItDoesNotRotateRightAfterObstacle(): void
+    {
+        $grid = array_fill(0, 10, array_fill(0, 10, '.'));
+        $grid[1][0] = 'O';
+        $this->marsRover = new MarsRover($grid);
+        $this->assertEquals("O:0:0:N", $this->marsRover->command("MRMMM"));
+    }
+
+    public function testItDoesNotRotateLeftAfterObstacle(): void
+    {
+        $grid = array_fill(0, 10, array_fill(0, 10, '.'));
+        $grid[1][0] = 'O';
+        $this->marsRover = new MarsRover($grid);
+        $this->assertEquals("O:0:0:N", $this->marsRover->command("MLMMM"));
+    }
+
     public function testMixedDirections(): void
     {
         $this->assertEquals("2:3:N", $this->marsRover->command("MMRMMLM"));
