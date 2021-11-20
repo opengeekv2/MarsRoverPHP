@@ -121,7 +121,7 @@ class TestMarsRover extends TestCase
     public function testFrontObstacle(): void
     {
         $grid = array_fill(0, 10, array_fill(0, 10, '.'));
-        $grid[1][0] = 'O';
+        $grid[0][1] = 'O';
         $this->marsRover = new MarsRover($grid);
         $this->assertEquals("O:0:0:N", $this->marsRover->command("M"));
     }
@@ -129,7 +129,7 @@ class TestMarsRover extends TestCase
     public function testItDoesNotMoveAfterObstacle(): void
     {
         $grid = array_fill(0, 10, array_fill(0, 10, '.'));
-        $grid[1][0] = 'O';
+        $grid[0][1] = 'O';
         $this->marsRover = new MarsRover($grid);
         $this->assertEquals("O:0:0:N", $this->marsRover->command("MMMMM"));
     }
@@ -137,7 +137,7 @@ class TestMarsRover extends TestCase
     public function testItDoesNotRotateRightAfterObstacle(): void
     {
         $grid = array_fill(0, 10, array_fill(0, 10, '.'));
-        $grid[1][0] = 'O';
+        $grid[0][1] = 'O';
         $this->marsRover = new MarsRover($grid);
         $this->assertEquals("O:0:0:N", $this->marsRover->command("MRMMM"));
     }
@@ -145,7 +145,7 @@ class TestMarsRover extends TestCase
     public function testItDoesNotRotateLeftAfterObstacle(): void
     {
         $grid = array_fill(0, 10, array_fill(0, 10, '.'));
-        $grid[1][0] = 'O';
+        $grid[0][1] = 'O';
         $this->marsRover = new MarsRover($grid);
         $this->assertEquals("O:0:0:N", $this->marsRover->command("MLMMM"));
     }

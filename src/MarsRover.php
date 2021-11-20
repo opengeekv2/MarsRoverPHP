@@ -11,8 +11,8 @@ class RoverState
 
     public function __construct(
         private array $grid,
-        private int $xStep = 1,
-        private int $yStep = 0,
+        private int $xStep = 0,
+        private int $yStep = 1,
         private int $x = 0,
         private int $y = 0,
         private array $compass = ['N', 'E', 'S', 'W']
@@ -64,8 +64,8 @@ class RoverState
 
         return new RoverState(
             $this->grid,
-            $this->xStep*self::COS_90 - $this->yStep*self::SIN_90,
-            $this->xStep*self::SIN_90 + $this->yStep*self::COS_90,
+            $this->xStep*self::COS_90 + $this->yStep*self::SIN_90,
+            -$this->xStep*self::SIN_90 + $this->yStep*self::COS_90,
             $this->x,
             $this->y,
             $this->compass
@@ -80,8 +80,8 @@ class RoverState
 
         return new RoverState(
             $this->grid,
-            $this->xStep*self::COS_90 + $this->yStep*self::SIN_90,
-            -$this->xStep*self::SIN_90 + $this->yStep*self::COS_90,
+            $this->xStep*self::COS_90 - $this->yStep*self::SIN_90,
+            $this->xStep*self::SIN_90 + $this->yStep*self::COS_90,
             $this->x,
             $this->y,
             $last
@@ -95,7 +95,7 @@ class RoverState
 
     public function getState(): string
     {
-        $str_state = strval($this->y) . ':' . strval($this->x) . ':' . $this->getCurrentDirection();
+        $str_state = strval($this->x) . ':' . strval($this->y) . ':' . $this->getCurrentDirection();
         if ($this->blocked) {
             $str_state = 'O:' . $str_state;
         }
